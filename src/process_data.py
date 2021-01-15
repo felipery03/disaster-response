@@ -84,7 +84,7 @@ def save_data(df, database_path, table_name):
         and extension
     table_name (string): Table name which data will be inputed
     '''
-    print(df.head())
+    
     engine = create_engine('sqlite:///' + database_path)
 
     try:
