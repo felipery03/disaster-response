@@ -69,6 +69,10 @@ def clean_data(df):
     # Merge cleaned categories and main dataframe
     data = pd.concat([data, categories], axis=1)
 
+    # All values of child_alone are 0, it is not
+    # possible to use this category
+    data.drop('child_alone', axis=1, inplace=True)
+
     # Drop duplicates
     data.drop_duplicates(inplace=True)
 
