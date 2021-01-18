@@ -2,6 +2,8 @@ import sys
 import pandas as pd
 from sqlalchemy import create_engine
 
+from utils_pkg import  save_data
+
 def load_data(messages_filepath, categories_filepath):
     ''' Load messages and categories dataset and merge both
 
@@ -77,25 +79,6 @@ def clean_data(df):
     data.drop_duplicates(inplace=True)
 
     return data
-
-def save_data(df, database_path, table_name):
-    ''' Save a dataframe in a sqlite db, creating a new table
-    with table_name.
-
-    Params:
-    df (dataframe): Input dataframe
-    database_path (string): Database path including database name
-        and extension
-    table_name (string): Table name which data will be inputed
-    '''
-    
-    engine = create_engine('sqlite:///' + database_path)
-
-    try:
-        df.to_sql(table_name, engine, index=False, if_exists='replace')
-
-    except(e):
-        print(e)
 
 def main():
     if len(sys.argv) == 4:
