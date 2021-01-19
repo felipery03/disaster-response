@@ -2,19 +2,20 @@ import json
 import plotly
 import pandas as pd
 import pickle
-from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar, Scatter, Pie
 from sqlalchemy import create_engine
+from flask import Flask
+
 app = Flask(__name__)
 
 # load data
-engine = create_engine('sqlite:///../data/processed/DisasterResponse.db')
+engine = create_engine('sqlite:///data/processed/DisasterResponse.db')
 df = pd.read_sql_table('messages', engine)
 results = pd.read_sql_table('results', engine)
 
 # load model
-model = pickle.load(open("../models/model.pkl", 'rb'))
+model = pickle.load(open("models/model.pkl", 'rb'))
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
