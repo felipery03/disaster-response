@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 from sqlalchemy import create_engine
-
+from sklearn.preprocessing import OneHotEncoder
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.pipeline import Pipeline, FeatureUnion
@@ -11,9 +11,8 @@ from sklearn.metrics import precision_recall_fscore_support
 from sklearn.ensemble import RandomForestClassifier
 import pickle
 import time
-
 from utils_pkg.utils import tokenize, save_data
-from utils_pkg.transformers import FilterColumns, CountTokens, GenreMessage
+from utils_pkg.transformers import FilterColumns, CountTokens
 
 def load_data(database_filepath, table_name):
     ''' Load data from sqlitedatabase.
@@ -55,9 +54,12 @@ def build_model(tunning=False):
     '''
     pipeline = Pipeline([
     ('features', FeatureUnion([
-        ('genre_feat', GenreMessage()),
+        ('genre_feat', Pipeline([
+            ('filter_genre', FilterColumns('genre', dim=2)),
+            ('onehot', OneHotEncoder(handle_unknown='ignore'))   
+        ])),
         ('txt_feats', Pipeline([
-            ('filter_msg', FilterColumns('message')),
+            ('filter_msg', FilterColumns('message', dim=1)),
             ('vect', CountVectorizer(tokenizer=tokenize)),
             ('union_txt_feats', FeatureUnion([
                 ('tfidf', TfidfTransformer()),
