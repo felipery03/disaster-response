@@ -40,7 +40,7 @@ All raw data sets were organized and labeled by [Figure Eight](https://appen.com
 
 ## File Descriptions <a name="files"></a>
 
-File structure of the project:
+1. File structure of the project:
 
 <pre>
 <code>
@@ -83,7 +83,7 @@ File structure of the project:
 </code>
 </pre>
 
-In data/processed/DisasterResponse.db there are 2 tables:
+2. In data/processed/DisasterResponse.db there are 2 tables:
 - *messages* - process data
 - *results* - model score metrics for test data
 
