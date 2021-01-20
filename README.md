@@ -57,6 +57,12 @@ File structure of the project:
 |   |-- raw
 |   |   |-- disaster_categories.csv  # data to process 
 |   |   |-- disaster_messages.csv  # data to process
+|-- docs
+|   |-- imgs
+|   |   |-- home_app.PNG # picture of home app
+|   |   |-- plots.PNG # picture of plots
+|   |   |-- model_result_1.PNG # picture 1 of model prediction
+|   |   |-- model_result_2.PNG # picture 2 of model prediction
 |-- models
 |   |-- model.pkl  # saved model 
 |-- src
@@ -82,6 +88,30 @@ In data/processed/DisasterResponse.db there are 2 tables:
 - *results* - model score metrics for test data
 
 ## Results <a name="results"></a>
+
+Home app and plots:
+
+![Picture 1](docs/imgs/home_app.PNG)
+![Picture 2](docs/imgs/plots.PNG)
+
+Example of the model's predict:
+
+![Picture 3](docs/imgs/model_result_1.PNG)
+![Picture 4](docs/imgs/model_result_2.PNG)
+
+Features used to train the model:
+- TF-IDF extractions of message after text processing
+- Number of tokens in the message
+- Message genre
+
+Modeling challeges:
+
+This problem has a lot of imbalanced labels. As example, *child_alone* was dropped because there is not positive samples for
+it. 
+The impact of imbalanced data is the possibility of trainned model to be biased for the majority class. Therefore, during model training, class_weight was set up
+to 'balanced' as a possible treatment. However, it is observed in graph *F1-score x Percentage of positive class* that in labels too imbalanced, the performance
+decreases a lot.
+
 
 
 
