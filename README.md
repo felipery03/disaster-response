@@ -89,22 +89,22 @@ In data/processed/DisasterResponse.db there are 2 tables:
 
 ## Results <a name="results"></a>
 
-Home app and plots:
+1. Home app and plots:
 
 ![Picture 1](docs/imgs/home_app.PNG)
 ![Picture 2](docs/imgs/plots.PNG)
 
-Example of the model's predict:
+2. Example of model's predict:
 
 ![Picture 3](docs/imgs/model_result_1.PNG)
 ![Picture 4](docs/imgs/model_result_2.PNG)
 
-Features used to train the model:
+3. Features used to train the model:
 - TF-IDF extractions of message after text processing
 - Number of tokens in the message
 - Message genre
 
-Modeling challeges:
+4. Modeling challeges:
 
 This problem has a lot of imbalanced labels. As example, *child_alone* was dropped because there is not positive samples for
 it. 
