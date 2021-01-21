@@ -12,7 +12,7 @@
 
 All aditional python libraries to run this project are in *requirements.txt*. The code should run in Python versions 3.*.<p />
 1. To install all dependences, run in comand line:<br />
-          `pip install -m requirements.txt`
+          `pip install -r requirements.txt`
 
 2. Run the following commands in the project's root directory to set up database and model.
 
